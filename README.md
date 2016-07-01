@@ -1,5 +1,7 @@
 # About
 
+[![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/martinlindhe/open/master)
+
 `open` command to simulate the MacOS `open` command, targeting Windows
 
 
