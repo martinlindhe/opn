@@ -8,13 +8,14 @@ import (
 
 func main() {
 
+	args := []string{}
 	if len(os.Args) < 2 {
-		fmt.Println("missing parameters")
-		os.Exit(1)
+		args = []string{"."}
+	} else {
+		args = os.Args[1:]
 	}
 
-	args := []string{"/c", "start"}
-	args = append(args, os.Args[1:]...)
+	args = append([]string{"/c", "start"}, args...)
 
 	cmd := exec.Command("cmd", args...)
 
