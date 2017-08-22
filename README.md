@@ -10,7 +10,7 @@
     go get -u github.com/martinlindhe/open
 
 
-# Usage
+# Windows usage
 
 Open folder in Explorer:
 
