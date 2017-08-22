@@ -28,14 +28,13 @@ Open file in default app:
 # Linux usage
 
 There usually is a different 'open' installed on the system.
-To invoke it, we assume that you have your exported to your
+To invoke it, we assume that you have exported the ~/go/bin folder to your
 session's PATH before the system folders.
 
 Something like this in your .bashrc:
 ```bash
-export GOPATH="$HOME/dev/go"
-export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 ```
 
 ## License
