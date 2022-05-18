@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/martinlindhe/open/open"
+	"github.com/martinlindhe/opn/open"
 )
 
 func main() {

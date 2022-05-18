@@ -1,41 +1,29 @@
 # About
 
-[![GoDoc](https://godoc.org/github.com/martinlindhe/open/open?status.svg)](https://godoc.org/github.com/martinlindhe/open/open)
+`opn` takes an argument of a file, path or a URL, and opens the registered filetype handler, file explorer or web browser accordingly.
 
-`open` command to simulate the MacOS `open` command, targeting Linux and Windows
+The `opn` command simulates the MacOS `open` command, targeting Linux and Windows.
 
 
 # Installation
 
-    go get -u github.com/martinlindhe/open
+    go install github.com/martinlindhe/opn@latest
 
 
-# Windows usage
+# Usage
 
-Open folder in Explorer:
+Open folder in the file explorer:
 
-    open .
+    opn .
 
-Open url
+Open url in default browser:
 
-    open https://google.com
+    opn https://google.com
 
 Open file in default app:
 
-    open main.go
+    opn main.go
 
-
-# Linux usage
-
-There usually is a different 'open' installed on the system.
-To invoke it, we assume that you have exported the ~/go/bin folder to your
-session's PATH before the system folders.
-
-Something like this in your .bashrc:
-```bash
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-```
 
 ## License
 
