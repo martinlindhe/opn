@@ -7,7 +7,7 @@ The `opn` command simulates the MacOS `open` command, targeting Linux and Window
 
 # Installation
 
-    go install github.com/martinlindhe/opn@latest
+    cargo install opn
 
 
 # Usage
@@ -22,7 +22,7 @@ Open url in default browser:
 
 Open file in default app:
 
-    opn main.go
+    opn main.rs
 
 
 ## License
