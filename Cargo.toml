@@ -1,8 +1,10 @@
 [package]
 name = "opn"
-version = "0.4.0"
+version = "0.4.2"
 edition = "2021"
 license = "MIT"
+description = "`opn` command to simulate the MacOS `open` command elsewhere."
+homepage = "https://github.com/martinlindhe/opn"
 
 [dependencies]
 
