@@ -23,7 +23,6 @@ fn main() {
     let _ = Command::new("cmd")
         .args(cmd)
         .stdout(Stdio::piped())
-        .stdout(Stdio::piped())
         .output() 
         .expect("failed to execute process");
 }
