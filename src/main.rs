@@ -20,13 +20,17 @@ fn main() -> std::io::Result<()> {
 
     let p = args.join(" ");
 
-    let abs1 = fs::canonicalize(p)?;
-
-    let absolute = abs1.into_os_string().into_string().unwrap();
-
     let mut cmd: Vec<String> = Vec::new();
     cmd.extend(prefix);
-    cmd.push(absolute);
+
+    if p.contains("://") {
+        cmd.push(p);
+    } else {
+        let abs1 = fs::canonicalize(p)?;
+
+        let absolute = abs1.into_os_string().into_string().unwrap();
+        cmd.push(absolute);
+    }
 
     let _ = Command::new("cmd")
         .args(cmd)
