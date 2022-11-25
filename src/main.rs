@@ -1,6 +1,10 @@
+#![feature(absolute_path)]
+
 use std::process::{Command, Stdio};
 
-fn main() {
+use std::path::{self, Path};
+
+fn main() -> std::io::Result<()> {
     #[cfg(target_os = "windows")]
     let prefix = vec!["cmd".to_string(), "/C".to_string(), "start".to_string()];
 
@@ -16,13 +20,21 @@ fn main() {
         args.push(String::from("."));
     }
 
+    let p = args.join(" ");
+
+    let abs1 = path::absolute(p)?;
+
+    let absolute = abs1.into_os_string().into_string().unwrap();
+
     let mut cmd: Vec<String> = Vec::new();
     cmd.extend(prefix);
-    cmd.extend(args);
- 
+    cmd.push(absolute);
+
     let _ = Command::new("cmd")
         .args(cmd)
         .stdout(Stdio::piped())
-        .output() 
+        .output()
         .expect("failed to execute process");
+
+    Ok(())
 }
