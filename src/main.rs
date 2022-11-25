@@ -2,7 +2,7 @@
 
 use std::process::{Command, Stdio};
 
-use std::path::{self, Path};
+use std::path;
 
 fn main() -> std::io::Result<()> {
     #[cfg(target_os = "windows")]
