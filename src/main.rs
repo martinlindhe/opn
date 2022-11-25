@@ -1,8 +1,6 @@
-#![feature(absolute_path)]
-
 use std::process::{Command, Stdio};
 
-use std::path;
+use std::fs;
 
 fn main() -> std::io::Result<()> {
     #[cfg(target_os = "windows")]
@@ -22,7 +20,7 @@ fn main() -> std::io::Result<()> {
 
     let p = args.join(" ");
 
-    let abs1 = path::absolute(p)?;
+    let abs1 = fs::canonicalize(p)?;
 
     let absolute = abs1.into_os_string().into_string().unwrap();
 
