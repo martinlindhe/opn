@@ -3,14 +3,19 @@ use std::process::{Command, Stdio};
 use std::fs;
 
 fn main() -> std::io::Result<()> {
+    let mut cmd_args: Vec<String> = Vec::new();
+
     #[cfg(target_os = "windows")]
-    let prefix = vec!["cmd".to_string(), "/C".to_string(), "start".to_string()];
+    let cmd = "cmd";
+
+    #[cfg(target_os = "windows")]
+    cmd_args.extend(vec!["/C".to_string(), "start".to_string()]);
 
     #[cfg(target_os = "linux")]
-    let prefix = vec!["xdg-open".to_string()];
+    let cmd = "xdg-open";
 
     #[cfg(target_os = "macos")]
-    let prefix = vec!["open".to_string()];
+    let cmd = "open";
 
     let mut args: Vec<String> = std::env::args().skip(1).collect();
 
@@ -20,20 +25,17 @@ fn main() -> std::io::Result<()> {
 
     let p = args.join(" ");
 
-    let mut cmd: Vec<String> = Vec::new();
-    cmd.extend(prefix);
-
     if p.contains("://") {
-        cmd.push(p);
+        cmd_args.push(p);
     } else {
         let abs1 = fs::canonicalize(p)?;
 
         let absolute = abs1.into_os_string().into_string().unwrap();
-        cmd.push(absolute);
+        cmd_args.push(absolute);
     }
 
-    let _ = Command::new("cmd")
-        .args(cmd)
+    let _ = Command::new(cmd)
+        .args(cmd_args)
         .stdout(Stdio::piped())
         .output()
         .expect("failed to execute process");
